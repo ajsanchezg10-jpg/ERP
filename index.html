@@ -1,0 +1,14 @@
+// Firebase config
+const firebaseConfig = {
+  apiKey: "REEMPLAZA_APIKEY",
+  authDomain: "REEMPLAZA_AUTHDOMAIN",
+  projectId: "REEMPLAZA_PROJECTID",
+  storageBucket: "REEMPLAZA_BUCKET",
+  messagingSenderId: "REEMPLAZA_SENDERID",
+  appId: "REEMPLAZA_APPID"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+const db = firebase.firestore();
+const auth = firebase.auth();
