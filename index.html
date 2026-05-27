@@ -1,0 +1,35 @@
+function login() {
+  const email = document.getElementById("l-user").value;
+  const password = document.getElementById("l-pass").value;
+
+  auth.signInWithEmailAndPassword(email, password)
+    .then(() => {
+      document.getElementById("login-wrap").style.display = "none";
+      document.getElementById("app-wrap").style.display = "block";
+
+      if (typeof initApp === "function") {
+        initApp();
+      }
+    })
+    .catch(error => {
+      alert("Error de acceso: " + error.message);
+    });
+}
+
+function logout() {
+  auth.signOut();
+}
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    document.getElementById("login-wrap").style.display = "none";
+    document.getElementById("app-wrap").style.display = "block";
+
+    if (typeof initApp === "function") {
+      initApp();
+    }
+  } else {
+    document.getElementById("login-wrap").style.display = "flex";
+    document.getElementById("app-wrap").style.display = "none";
+  }
+});
